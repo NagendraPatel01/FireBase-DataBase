@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,7 +41,7 @@ public class GetActivity extends AppCompatActivity {
         del=findViewById(R.id.del);
         edit=findViewById(R.id.edit);
 
-        FirebaseDatabase.getInstance().getReference().child("ankit").child("-M7TNpBB5d59W8Hq2YDK")
+        FirebaseDatabase.getInstance().getReference().child("ankit").child("-M7lFY5aUIWxEvHfzKOd")
 
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -85,7 +86,7 @@ public class GetActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                      FirebaseDatabase.getInstance().getReference().child("ankit").child("-M7TNpBB5d59W8Hq2YDK")
+                      FirebaseDatabase.getInstance().getReference().child("ankit").child("-M7lFY5aUIWxEvHfzKOd")
                               .removeValue();
                         alertDialog.cancel();
                     }
@@ -103,18 +104,18 @@ public class GetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final TextView name_edit,cls_edit,roll_edit,phn_edit;
-                Button btn;
-
                 AlertDialog.Builder alert=new AlertDialog.Builder(GetActivity.this);
 
                 final View dialogView= LayoutInflater.from(GetActivity.this).inflate(R.layout.form,null,false);
                 alert.setView(dialogView);
 
-                name_edit =dialogView.findViewById(R.id.name);
-                cls_edit = dialogView.findViewById(R.id.cls);
-                roll_edit = dialogView.findViewById(R.id.roll);
-                phn_edit = dialogView.findViewById(R.id.phn);
+                final EditText name_edit,cls_edit,roll_edit,phn_edit;
+                Button btn;
+
+                name_edit =dialogView.findViewById(R.id.name_edit);
+                cls_edit = dialogView.findViewById(R.id.cls_edit);
+                roll_edit = dialogView.findViewById(R.id.roll_edit);
+                phn_edit = dialogView.findViewById(R.id.phn_edit);
                 btn = dialogView.findViewById(R.id.btn);
 
                 name_edit.setText(name.getText());
@@ -135,7 +136,7 @@ public class GetActivity extends AppCompatActivity {
                         hashMap.put("phone",phn_edit.getText().toString());
                         hashMap.put("roll",roll_edit.getText().toString());
 
-                        FirebaseDatabase.getInstance().getReference().child("ankit").child("-M7TNpBB5d59W8Hq2YDK")
+                        FirebaseDatabase.getInstance().getReference().child("ankit").child("-M7lFY5aUIWxEvHfzKOd")
                                 .updateChildren(hashMap)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
